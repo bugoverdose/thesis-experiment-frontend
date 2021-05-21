@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+.capsule-input {
+  @apply border-2 w-full rounded-lg focus:outline-none focus:border-gray-500 p-1;
+}
+.capsule-container-width {
+  @apply w-full max-w-screen-lg mx-auto px-12 xl:px-3;
+}
+.capsule-responsive-text-xl {
+  @apply text-3xl sm:text-4xl md:text-6xl lg:text-7xl;
+}
+.capsule-responsive-text-lg {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+}
+.capsule-responsive-text {
+  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+}
+.capsule-btn {
+  @apply p-3 border-2 rounded-2xl m-3 mb-0;
+}
+.capsule-btn-hover {
+  @apply bg-gray-400 text-white rounded-md hover:bg-black cursor-pointer;
+}
+@tailwind utilities;
