@@ -2,7 +2,7 @@ import { gql, useMutation } from "@apollo/client";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { authTokenVar, isLoggedInVar } from "../../apollo";
 import { FormInputError } from "../../components/form-input-error";
 import { FormSubmitBtn } from "../../components/form-submit-btn";
@@ -12,7 +12,7 @@ import {
   LocalLoginMutation,
   LocalLoginMutationVariables,
 } from "../../generated_api_types/LocalLoginMutation";
-import { localAuthRoute, surveyRoute } from "../../routers/routes";
+import { localAuthRoute } from "../../routers/routes";
 
 export const LOCAL_LOGIN_MUTATION = gql`
   mutation LocalLoginMutation($localLoginInput: LocalLoginInput!) {
@@ -30,7 +30,7 @@ interface ILocalLoginForm {
 }
 
 export const LocalLogin = () => {
-  const history = useHistory();
+  // const history = useHistory();
   const {
     register,
     getValues,
@@ -48,8 +48,7 @@ export const LocalLogin = () => {
       localStorage.setItem(LOCALSTORAGE_TOKEN, token); // 인증된 토큰 브라우저에 저장. 웹사이트 재방문시, localstorage의 토큰으로 자동 로그인 가능.
       authTokenVar(token);
       isLoggedInVar(true); // apollo.ts에서 설정한 reactive variable둘의 값 업데이트.
-      history.push(surveyRoute.start);
-      window.location.reload(); // LoggedInRouter 내부에서 다시 제대로 Route 선택되도록.
+      // history.push(surveyRoute.start);
     } else {
       togglePopupMode(); // mutation 사용해야 하는 원인.
     } //  input 내용 변경 안하고 그대로 submit하는 경우, Query면 cache에서 그대로 읽어서 실행되지 않음 / Mutation이면 제대로 재실행됨.

@@ -30,7 +30,7 @@ export const Home: React.FC = () => {
             기프티콘을 보내드릴 예정입니다.
           </p>
           <p className="mb-5">
-            문의 사항이 있다면 bugod96@gmail.com으로 연락바랍니다.
+            문의 사항이 있다면 이메일(bugod96@gmail.com)로 연락바랍니다.
           </p>
 
           <p>다시 한번 귀한 시간 내주셔서 감사드립니다.</p>
@@ -40,11 +40,11 @@ export const Home: React.FC = () => {
           <div className="flex">
             <Link
               to={localAuthRoute.createAccount}
-              className="capsule-btn capsule-btn-hover border-gray-800"
+              className="capsule-btn capsule-btn-hover"
             >
               아이디와 비밀번호 생성
             </Link>
-            <div className="capsule-btn capsule-btn-hover border-gray-800">
+            <div className="capsule-btn capsule-btn-hover">
               카카오톡 계정으로 시작
             </div>
           </div>

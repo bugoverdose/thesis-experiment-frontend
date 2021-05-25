@@ -7,6 +7,11 @@
 // START Enums and Input Objects
 //==============================================================
 
+export enum AccountType {
+  Kakao = "Kakao",
+  Local = "Local",
+}
+
 export interface CreateLocalAccountInput {
   localId: string;
   password: string;
@@ -15,6 +20,24 @@ export interface CreateLocalAccountInput {
 export interface LocalLoginInput {
   localId: string;
   password: string;
+}
+
+export interface LocalScreeningInput {
+  response: string;
+}
+
+export interface SaveAddressResponseInput {
+  response: string;
+}
+
+export interface SaveResponseInput {
+  questionNum: number;
+  response: number;
+}
+
+export interface SaveUserInfoResponseInput {
+  target: string;
+  response: number;
 }
 
 //==============================================================

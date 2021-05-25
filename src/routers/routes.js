@@ -16,6 +16,10 @@ export const localAuthRoute = {
 
 export const surveyRoute = {
   start: "/",
+  gender: "/gender",
+  age: "/age",
   question: (num) => (num ? `/question/${num}` : "/question/:num"),
+  address: "/address",
+  local_screening: "/local-screening",
   end: "/submit",
 };
