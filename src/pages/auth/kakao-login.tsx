@@ -37,7 +37,7 @@ export const KakaoLogin: React.FC = () => {
     }
     // loggedInRouter에 redirect해주는 라우터 설정
     // history.push(surveyRoute.start);
-    // window.location.reload(); // 디버그 목적: LoggedInRouter 내에서 제대로 된 컴포넌트가 렌더링되지 않음. 문제점: 캐쉬가 완전히 지워짐.
+    window.location.reload(); // 디버그 목적: LoggedInRouter 내에서 제대로 된 컴포넌트가 렌더링되지 않음. 문제점: 캐쉬가 완전히 지워짐.
   };
 
   const [kakaoLoginMutation, { loading: loadingMutation }] = useMutation<

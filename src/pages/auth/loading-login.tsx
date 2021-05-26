@@ -4,7 +4,6 @@ import { surveyRoute } from "../../routers/routes";
 
 export const LoadingLogin: React.FC = () => {
   const history = useHistory();
-  window.location.reload();
   history.push(surveyRoute.start);
 
   return (

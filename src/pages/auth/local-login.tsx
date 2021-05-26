@@ -49,6 +49,7 @@ export const LocalLogin = () => {
       authTokenVar(token);
       isLoggedInVar(true); // apollo.ts에서 설정한 reactive variable둘의 값 업데이트.
       // history.push(surveyRoute.start);
+      window.location.reload();
     } else {
       togglePopupMode(); // mutation 사용해야 하는 원인.
     } //  input 내용 변경 안하고 그대로 submit하는 경우, Query면 cache에서 그대로 읽어서 실행되지 않음 / Mutation이면 제대로 재실행됨.

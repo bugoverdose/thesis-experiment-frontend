@@ -14,8 +14,7 @@ import { StartSurvey } from "../pages/survey/start-survey";
 import { localAuthRoute, oauthRoute, surveyRoute } from "./routes";
 
 export const LoggedInRouter = () => {
-  const { loading, data } = useLoggedInUser();
-  console.log(data);
+  const { loading } = useLoggedInUser();
   return (
     <Router>
       <Header />
