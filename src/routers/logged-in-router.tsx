@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { HeaderLoggedIn as Header } from "../components/header-logged-in";
 import { useLoggedInUser } from "../hooks/useLoggedInUser-hook";
 import { NotFound } from "../pages/404";
-import { LoadingLogin } from "../pages/local-auth/loading-login";
+import { LoadingLogin } from "../pages/auth/loading-login";
 import { Address } from "../pages/survey/address";
 import { Age } from "../pages/survey/age";
 import { EndSurvey } from "../pages/survey/end-survey";
@@ -11,10 +11,11 @@ import { Gender } from "../pages/survey/gender";
 import { LocalScreening } from "../pages/survey/local-screening";
 import { Question } from "../pages/survey/question";
 import { StartSurvey } from "../pages/survey/start-survey";
-import { localAuthRoute, surveyRoute } from "./routes";
+import { localAuthRoute, oauthRoute, surveyRoute } from "./routes";
 
 export const LoggedInRouter = () => {
-  const { loading } = useLoggedInUser();
+  const { loading, data } = useLoggedInUser();
+  console.log(data);
   return (
     <Router>
       <Header />
@@ -43,6 +44,9 @@ export const LoggedInRouter = () => {
             <EndSurvey />
           </Route>
           <Route path={localAuthRoute.login}>
+            <LoadingLogin />
+          </Route>
+          <Route path={oauthRoute.kakaoRedirectURI}>
             <LoadingLogin />
           </Route>
           <Route>

@@ -4,7 +4,9 @@ import { surveyRoute } from "../../routers/routes";
 
 export const LoadingLogin: React.FC = () => {
   const history = useHistory();
+  window.location.reload();
   history.push(surveyRoute.start);
+
   return (
     <main className="w-full h-screen pt-40 pb-28 bg-gray-800 text-white">
       <Helmet>

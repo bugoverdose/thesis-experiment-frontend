@@ -17,6 +17,10 @@ export interface CreateLocalAccountInput {
   password: string;
 }
 
+export interface KakaoLoginInput {
+  code: string;
+}
+
 export interface LocalLoginInput {
   localId: string;
   password: string;

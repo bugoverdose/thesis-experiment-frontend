@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { HeaderLoggedOut as Header } from "../components/header-logged-out";
 import { NotFound } from "../pages/404";
 import { Home } from "../pages/home";
-import { CreateLocalAccount } from "../pages/local-auth/create-local-account";
-import { LocalLogin } from "../pages/local-auth/local-login";
-import { commonRoute, localAuthRoute } from "./routes";
+import { KakaoLogin } from "../pages/auth/kakao-login";
+import { CreateLocalAccount } from "../pages/auth/create-local-account";
+import { LocalLogin } from "../pages/auth/local-login";
+import { commonRoute, localAuthRoute, oauthRoute } from "./routes";
 
 const LocalAuthRoutes = [
   <Route key={1} path={localAuthRoute.createAccount} exact>
@@ -24,9 +25,9 @@ export const LoggedOutRouter = () => (
         <Home />
       </Route>
       {LocalAuthRoutes}
-      {/* <Route path={authRoute.githubToken}>
-        <GithubLogin />
-      </Route> */}
+      <Route path={oauthRoute.kakaoRedirectURI}>
+        <KakaoLogin />
+      </Route>
       <Route>
         <NotFound />
       </Route>

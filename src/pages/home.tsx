@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { localAuthRoute } from "../routers/routes";
+import { localAuthRoute, oauthRoute } from "../routers/routes";
 
 export const Home: React.FC = () => {
   return (
@@ -44,9 +44,12 @@ export const Home: React.FC = () => {
             >
               아이디와 비밀번호 생성
             </Link>
-            <div className="capsule-btn capsule-btn-hover">
+            <a
+              className="capsule-btn capsule-btn-hover"
+              href={oauthRoute.kakaoLogin}
+            >
               카카오톡 계정으로 시작
-            </div>
+            </a>
           </div>
         </div>
       </div>

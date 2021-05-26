@@ -15,7 +15,7 @@ export const authTokenVar = makeVar(token);
 const httpLink = createHttpLink({
   uri:
     process.env.NODE_ENV !== "production"
-      ? "http://localhost:5000/graphql" // 백엔드의 playground 주소. (프론트엔드와 포트 번호는 달라야 함)
+      ? "http://172.18.183.172:5000/graphql" // 백엔드의 playground 주소. (프론트엔드와 포트 번호는 달라야 함)
       : "https://podcast-backend-bugod.herokuapp.com/graphql",
 });
 

@@ -1,11 +1,16 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { AccountType } from "../../generated_api_types/globalTypes";
 import { useLoggedInUser } from "../../hooks/useLoggedInUser-hook";
 import { surveyRoute } from "../../routers/routes";
 
 export const StartSurvey: React.FC = () => {
-  const { data } = useLoggedInUser(); // loading 여부는 Router에서 처리
-  return (
+  const { data, loading } = useLoggedInUser(); // loading 여부는 Router에서 처리
+  console.log(data);
+
+  return loading ? (
+    <div></div>
+  ) : (
     <main className="w-full h-screen py-28 bg-white">
       <Helmet>
         <title>설문 시작</title>
@@ -17,7 +22,7 @@ export const StartSurvey: React.FC = () => {
         <p className="mb-5">
           귀하는{" "}
           <strong>
-            {data?.loggedInUser?.accountType === "Kakao"
+            {data?.loggedInUser?.accountType === AccountType.Kakao
               ? "카카오톡을 통한 소셜 로그인 방법"
               : "사이트에 직접 계정을 생성하는 방법"}
           </strong>
