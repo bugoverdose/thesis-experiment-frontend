@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { HeaderLoggedOut as Header } from "../components/header-logged-out";
+import { Header } from "../components/header";
 import { NotFound } from "../pages/404";
 import { Home } from "../pages/home";
 import { KakaoLogin } from "../pages/auth/kakao-login";

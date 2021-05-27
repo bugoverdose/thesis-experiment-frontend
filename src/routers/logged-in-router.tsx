@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { HeaderLoggedIn as Header } from "../components/header-logged-in";
+import { Header } from "../components/header";
 import { useLoggedInUser } from "../hooks/useLoggedInUser-hook";
 import { NotFound } from "../pages/404";
 import { LoadingLogin } from "../pages/auth/loading-login";
