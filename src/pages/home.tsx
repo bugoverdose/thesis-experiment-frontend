@@ -18,7 +18,7 @@ export const Home: React.FC = () => {
             학부생입니다. 해당 실험에 관심을 가져주셔서 감사합니다.
           </p>
           <p className="mb-5">
-            총 설문 시간은 3분 이내로 예상되며, 참여 도중 언제든지 중단하실 수
+            총 설문 시간은 5분 이내로 예상되며, 참여 도중 언제든지 중단하실 수
             있습니다.
           </p>
           <p className="mb-5">
@@ -33,7 +33,7 @@ export const Home: React.FC = () => {
             문의 사항이 있다면 이메일(bugod96@gmail.com)로 연락바랍니다.
           </p>
 
-          <p>다시 한번 귀한 시간 내주셔서 감사드립니다.</p>
+          <p>다시 한번 귀한 시간 내주셔서 감사드립니다. (_ _)</p>
         </div>
         <div className="flex flex-col items-center">
           <span>연구에 참여하기 위해 계정을 생성해주시기 바랍니다.</span>
