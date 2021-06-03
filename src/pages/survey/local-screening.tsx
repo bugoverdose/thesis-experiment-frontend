@@ -21,6 +21,7 @@ export const LocalScreening: React.FC = () => {
   const {
     getValues,
     handleSubmit,
+    register,
     formState: { isValid, errors },
   } = useForm<ISaveLocalScreeningResponseForm>({
     mode: "onBlur",
@@ -88,11 +89,13 @@ export const LocalScreening: React.FC = () => {
             </label>{" "}
             <input
               id="response"
-              className={`capsule-input m-5 ${
+              className={`capsule-input mt-5 ${
                 errors?.response?.message && "border-red-600"
               }`}
+              {...register("response", {
+                required: false,
+              })}
               name="response"
-              type="response"
               placeholder="ex) 카카오톡 계정이 없습니다."
             />
           </div>

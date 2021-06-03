@@ -93,7 +93,7 @@ export const Age: React.FC = () => {
                 required: true,
               })}
               name="response"
-              className="capsule-input m-5"
+              className="capsule-input mt-5"
             >
               {ageOption.map((response, index) => (
                 <option key={index}>{response}</option>

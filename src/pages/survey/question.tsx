@@ -130,7 +130,7 @@ export const Question: React.FC = () => {
                 required: true,
               })}
               name="response"
-              className="capsule-input m-5"
+              className="capsule-input mt-5"
             >
               {questionOption.map((response, index) => (
                 <option key={index}>{response}</option>

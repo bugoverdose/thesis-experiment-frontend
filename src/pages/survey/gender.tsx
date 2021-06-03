@@ -96,7 +96,7 @@ export const Gender: React.FC = () => {
                 required: true,
               })}
               name="response"
-              className="capsule-input m-5"
+              className="capsule-input mt-5"
             >
               {["남성", "여성", "해당없음"].map((response, index) => (
                 <option key={index}>{response}</option>

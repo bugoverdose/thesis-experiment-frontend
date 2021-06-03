@@ -24,6 +24,7 @@ export const Address: React.FC = () => {
   const {
     getValues,
     handleSubmit,
+    register,
     formState: { isValid, errors },
   } = useForm<ISaveAddressResponseForm>({
     mode: "onBlur",
@@ -99,11 +100,13 @@ export const Address: React.FC = () => {
             </label>
             <input
               id="response"
-              className={`capsule-input m-5 ${
+              className={`capsule-input mt-5 ${
                 errors?.response?.message && "border-red-600"
               }`}
+              {...register("response", {
+                required: false,
+              })}
               name="response"
-              type="response"
               placeholder="ex) 010-1234-5678"
             />
           </div>
