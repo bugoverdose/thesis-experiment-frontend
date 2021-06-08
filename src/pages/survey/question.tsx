@@ -7,11 +7,8 @@ import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { FormSubmitBtn } from "../../components/form-submit-btn";
 import { PopUp } from "../../components/pop-up";
-import {
-  questionOption,
-  questionText,
-  totalQuestionNum,
-} from "../../constants";
+import { RadioInput } from "../../components/radio-input";
+import { questionText, totalQuestionNum } from "../../constants";
 import {
   SaveResponseMutation,
   SaveResponseMutationVariables,
@@ -46,10 +43,9 @@ export const Question: React.FC = () => {
     register,
     getValues,
     handleSubmit,
-    formState: { isValid, errors },
+    formState: { isValid },
   } = useForm<ISaveResponseForm>({
-    mode: "onBlur",
-    defaultValues: { response: questionOption[3] },
+    mode: "onChange",
   });
 
   const onMutationCompleted = (data: SaveResponseMutation) => {
@@ -110,21 +106,66 @@ export const Question: React.FC = () => {
           className="flex flex-col text-2xl"
         >
           <div className="relative w-full mb-10">
-            <label
+            {/* <label
               htmlFor="response"
-              className={`font-semibold ${
-                errors?.response?.message && "text-red-600"
-              }`}
-            >
-              <span>
-                {
-                  questionText[
-                    `question${questionNum}` as keyof typeof questionText
-                  ]
-                }
-              </span>
-            </label>
-            <select
+              className="font-semibold"
+            > */}
+            <span>
+              {
+                questionText[
+                  `question${questionNum}` as keyof typeof questionText
+                ]
+              }
+            </span>
+            {/* </label> */}
+
+            <div className="flex justify-center items-center mt-5">
+              <div className="text-lg font-bold sm:text-2xl sm:font-medium mr-3">
+                동의
+              </div>
+              <div className="flex justify-center items-center">
+                <RadioInput
+                  register={register}
+                  value={7}
+                  inputCss="h-6 w-6 sm:h-10 sm:w-10"
+                />
+                <RadioInput
+                  register={register}
+                  value={6}
+                  inputCss="h-6 w-6 sm:h-9 sm:w-9"
+                />
+                <RadioInput
+                  register={register}
+                  value={5}
+                  inputCss="h-6 w-6 sm:h-8 sm:w-8"
+                />
+                <RadioInput
+                  register={register}
+                  value={4}
+                  inputCss="h-6 w-6 sm:h-7 sm:w-7"
+                />
+                <RadioInput
+                  register={register}
+                  value={3}
+                  inputCss="h-6 w-6 sm:h-8 sm:w-8"
+                />
+                <RadioInput
+                  register={register}
+                  value={2}
+                  inputCss="h-6 w-6 sm:h-9 sm:w-9"
+                />
+                <RadioInput
+                  register={register}
+                  value={1}
+                  inputCss="h-6 w-6 sm:h-10 sm:w-10"
+                />
+              </div>
+              <div className="text-lg font-bold sm:text-2xl sm:font-medium">
+                비동의
+              </div>
+            </div>
+          </div>
+          {/* <select
               id="response"
               {...register("response", { required: true })}
               name="response"
@@ -133,9 +174,7 @@ export const Question: React.FC = () => {
               {questionOption.map((response, index) => (
                 <option key={index}>{response}</option>
               ))}
-            </select>
-          </div>
-
+            </select> */}
           <Link
             to={
               +questionNum === 1

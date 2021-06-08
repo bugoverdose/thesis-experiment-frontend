@@ -1,15 +1,15 @@
 export const SESSION_STORAGE_TOKEN = "authentication-token";
 
 // export const ageOption = Array.from(Array(100), (_, idx) => idx + 1);
-export const questionOption = [
-  "1점 - 전혀 동의하지 않는다",
-  "2점 - 그다지 동의하지 않는다",
-  "3점 - 별로 동의하지 않는다",
-  "4점 - 보통이다",
-  "5점 - 약간 동의한다.",
-  "6점 - 상당히 동의한다",
-  "7점 - 매우 동의한다",
-];
+// export const questionOption = [
+//   "1점 - 전혀 동의하지 않는다",
+//   "2점 - 그다지 동의하지 않는다",
+//   "3점 - 별로 동의하지 않는다",
+//   "4점 - 보통이다",
+//   "5점 - 약간 동의한다.",
+//   "6점 - 상당히 동의한다",
+//   "7점 - 매우 동의한다",
+// ];
 
 export const totalQuestionNum = 16;
 

@@ -11,6 +11,7 @@ import {
 } from "../../generated_api_types/SaveUserInfoResponse";
 import { surveyRoute } from "../../routers/routes";
 import { SAVE_USER_INFO_RESPONSE_MUTATION } from "../../hooks/saveUserInfoMutations";
+import { RadioInput } from "../../components/radio-input";
 
 interface ISaveGenderResponseForm {
   response: string;
@@ -87,30 +88,24 @@ export const Gender: React.FC = () => {
           className="flex flex-col text-2xl"
         >
           <div className="flex flex-col mb-10">
-            <label className="mb-3">
-              <input
-                type="radio"
-                {...register("response", { required: true })}
-                className="capsule-radio"
-              />
-              남성
-            </label>
-            <label className="mb-3">
-              <input
-                type="radio"
-                {...register("response", { required: true })}
-                className="capsule-radio"
-              />
-              여성
-            </label>
-            <label className="mb-3">
-              <input
-                type="radio"
-                {...register("response", { required: true })}
-                className="capsule-radio"
-              />
-              해당없음
-            </label>
+            <RadioInput
+              register={register}
+              value={"남성"}
+              text={"남성"}
+              labelCss="mb-3"
+            />
+            <RadioInput
+              register={register}
+              value={"여성"}
+              text={"여성"}
+              labelCss="mb-3"
+            />
+            <RadioInput
+              register={register}
+              value={"해당없음"}
+              text={"해당없음"}
+              labelCss="mb-3"
+            />
           </div>
           <FormSubmitBtn
             canClick={isValid}
