@@ -85,30 +85,30 @@ export const CreateLocalAccount = () => {
           popupMode && "pointer-events-none"
         }`}
       >
-        <h2 className="text-4xl text-center pb-8 mb-20 border-b-2 font-semibold">
-          계정을 생성해주세요
-        </h2>
+        <h2 className="capsule-responsive-text">계정을 생성해주세요</h2>
 
         <form
           onSubmit={handleSubmit(onValidSubmit)}
-          className="flex flex-col mb-5 text-2xl"
+          className="flex flex-col mb-5 capsule-responsive-subtext"
         >
           <div className="relative w-full">
             <label
               htmlFor="localId"
-              className={`font-semibold ${
-                errors?.localId?.message && "text-red-600"
-              }`}
+              className={`font-semibold ${errors?.localId && "text-red-600"}`}
             >
-              ID <span className="text-red-600">*</span>
+              아이디
+              <span className="text-red-600 italic">
+                {errors?.localId?.type === "minLength" &&
+                  " - 5글자 이상이어야 합니다."}
+                {errors?.localId?.type === "maxLength" &&
+                  " - 15글자 이하여야 합니다."}
+              </span>
             </label>
             <input
               id="localId"
-              className={`capsule-input ${
-                errors?.localId?.message && "border-red-600"
-              }`}
+              className={`capsule-input ${errors?.localId && "border-red-600"}`}
               {...register("localId", {
-                required: "ID is Required",
+                required: "아이디는 필수사항입니다",
                 minLength: 5,
                 maxLength: 15,
               })}
@@ -118,30 +118,28 @@ export const CreateLocalAccount = () => {
             {errors?.localId?.message && (
               <FormInputError errorMessage={errors?.localId.message} />
             )}
-            {errors?.localId?.type === "minLength" && (
-              <FormInputError errorMessage={"5글자 이상이어야 합니다."} />
-            )}
-            {errors?.localId?.type === "maxLength" && (
-              <FormInputError errorMessage={"15글자 이하여야 합니다."} />
-            )}
           </div>
 
           <div className="relative w-full my-5">
             <label
               htmlFor="password"
-              className={`font-semibold ${
-                errors?.password?.message && "text-red-600"
-              }`}
+              className={`font-semibold ${errors?.password && "text-red-600"}`}
             >
-              Password <span className="text-red-600">*</span>
+              비밀번호
+              <span className="text-red-600 italic">
+                {errors?.password?.type === "minLength" &&
+                  " - 8글자 이상이어야 합니다."}
+                {errors?.password?.type === "maxLength" &&
+                  " - 20글자 이하여야 합니다."}
+              </span>
             </label>
             <input
               id="password"
               className={`capsule-input ${
-                errors?.password?.message && "border-red-600"
+                errors?.password && "border-red-600"
               }`}
               {...register("password", {
-                required: "Password is Required",
+                required: "비밀번호는 필수사항입니다",
                 minLength: 8,
                 maxLength: 20,
               })}
@@ -151,18 +149,12 @@ export const CreateLocalAccount = () => {
             {errors?.password?.message && (
               <FormInputError errorMessage={errors?.password.message} />
             )}
-            {errors?.password?.type === "minLength" && (
-              <FormInputError errorMessage={"8글자 이상이어야 합니다."} />
-            )}
-            {errors?.password?.type === "maxLength" && (
-              <FormInputError errorMessage={"20글자 이하여야 합니다."} />
-            )}
           </div>
 
           <FormSubmitBtn
             canClick={isValid}
             loading={loadingMutation}
-            mainText={"Submit"}
+            mainText={"제출"}
           />
         </form>
         <span className="font-semibold flex justify-center items-center">

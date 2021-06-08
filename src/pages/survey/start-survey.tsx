@@ -6,7 +6,6 @@ import { surveyRoute } from "../../routers/routes";
 
 export const StartSurvey: React.FC = () => {
   const { data, loading } = useLoggedInUser(); // loading 여부는 Router에서 처리
-  console.log(data);
 
   return loading ? (
     <div></div>

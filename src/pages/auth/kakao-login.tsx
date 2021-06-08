@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router";
 import { authTokenVar, isLoggedInVar } from "../../apollo";
-import { LOCALSTORAGE_TOKEN } from "../../constants";
+import { SESSION_STORAGE_TOKEN } from "../../constants";
 import {
   KakaoLoginMutation,
   KakaoLoginMutationVariables,
@@ -31,7 +31,7 @@ export const KakaoLogin: React.FC = () => {
       kakaoLogin: { ok, token },
     } = data;
     if (ok && token) {
-      localStorage.setItem(LOCALSTORAGE_TOKEN, token); // 인증된 토큰 브라우저에 저장. 웹사이트 재방문시, localstorage의 토큰으로 자동 로그인 가능.
+      sessionStorage.setItem(SESSION_STORAGE_TOKEN, token); // 인증된 토큰 브라우저에 저장. 웹사이트 재방문시, SESSION_STORAGE의 토큰으로 자동 로그인 가능.
       authTokenVar(token);
       isLoggedInVar(true); // apollo.ts에서 설정한 reactive variable둘의 값 업데이트.
     }

@@ -4,14 +4,12 @@ import { localAuthRoute, oauthRoute } from "../routers/routes";
 
 export const Home: React.FC = () => {
   return (
-    <main className="w-full h-screen py-28 bg-white">
+    <main className="w-full h-screen py-28 bg-white text-xl sm:text-2xl">
       <Helmet>
         <title>환영합니다</title>
       </Helmet>
-      <div className="text-2xl capsule-container-width">
-        <h2 className="text-4xl text-center pb-8 mb-16 border-b-2 font-semibold">
-          실험 안내
-        </h2>
+      <div className="capsule-container-width">
+        <h2 className="capsule-responsive-text">실험 안내</h2>
         <div className="border-2 border-gray-800 mb-5 p-3 rounded-md">
           <p className="mb-5">
             안녕하세요. 심리학과 졸업논문을 위해 연구를 진행하고 있는
@@ -37,7 +35,7 @@ export const Home: React.FC = () => {
         </div>
         <div className="flex flex-col items-center">
           <span>연구에 참여하기 위해 계정을 생성해주시기 바랍니다.</span>
-          <div className="flex">
+          <div className="flex mb-12">
             <Link
               to={localAuthRoute.createAccount}
               className="capsule-btn capsule-btn-hover"

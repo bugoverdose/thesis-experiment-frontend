@@ -5,9 +5,9 @@ import {
   makeVar,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { LOCALSTORAGE_TOKEN } from "./constants";
+import { SESSION_STORAGE_TOKEN } from "./constants";
 
-const token = localStorage.getItem(LOCALSTORAGE_TOKEN);
+const token = sessionStorage.getItem(SESSION_STORAGE_TOKEN);
 
 export const isLoggedInVar = makeVar(Boolean(token)); // 새로고침될 때마다 매번 새로 isLoggedInVar 생성하여 해당 값 대입.
 export const authTokenVar = makeVar(token);
@@ -15,7 +15,7 @@ export const authTokenVar = makeVar(token);
 const httpLink = createHttpLink({
   uri:
     process.env.NODE_ENV !== "production"
-      ? "http://172.18.183.172:5000/graphql" // 백엔드의 playground 주소. (프론트엔드와 포트 번호는 달라야 함)
+      ? "http://localhost:5000/graphql" // 백엔드의 playground 주소. (프론트엔드와 포트 번호는 달라야 함)
       : "https://thesis-experiment-backend.herokuapp.com/graphql",
 });
 

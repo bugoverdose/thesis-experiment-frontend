@@ -10,8 +10,8 @@ import {
   SaveUserInfoResponseVariables,
 } from "../../generated_api_types/SaveUserInfoResponse";
 import { surveyRoute } from "../../routers/routes";
-import { ageOption } from "../../constants";
 import { SAVE_USER_INFO_RESPONSE_MUTATION } from "../../hooks/saveUserInfoMutations";
+import { Link } from "react-router-dom";
 
 interface ISaveAgeResponseForm {
   response: number;
@@ -25,8 +25,7 @@ export const Age: React.FC = () => {
     handleSubmit,
     formState: { isValid, errors },
   } = useForm<ISaveAgeResponseForm>({
-    mode: "onBlur",
-    defaultValues: { response: 20 },
+    mode: "onChange",
   });
 
   const onMutationCompleted = (data: SaveUserInfoResponse) => {
@@ -71,9 +70,7 @@ export const Age: React.FC = () => {
           popupMode && "pointer-events-none"
         }`}
       >
-        <h2 className="text-4xl text-center pb-8 mb-20 border-b-2 font-semibold">
-          귀하의 연령은 무엇입니까?
-        </h2>
+        <h2 className="capsule-responsive-text">귀하의 연령은 무엇입니까?</h2>
         <form
           onSubmit={handleSubmit(onValidSubmit)}
           className="flex flex-col text-2xl"
@@ -85,21 +82,31 @@ export const Age: React.FC = () => {
                 errors?.response?.message && "text-red-600"
               }`}
             >
-              <span>만 나이로 선택해주시기 바랍니다.</span>
+              <span>만 나이로 숫자만 입력해주시기 바랍니다.</span>
             </label>
-            <select
+            <input
               id="response"
+              className={`capsule-input mt-5 ${
+                errors?.response?.message && "border-red-600"
+              }`}
               {...register("response", {
                 required: true,
               })}
+              type="number"
+              min="1"
+              max="100"
               name="response"
-              className="capsule-input mt-5"
-            >
-              {ageOption.map((response, index) => (
-                <option key={index}>{response}</option>
-              ))}
-            </select>
+              placeholder="ex) 20"
+            />
           </div>
+
+          <Link
+            to={surveyRoute.gender}
+            className="py-4 mb-3 text-xl text-center focus:outline-none text-white transition-colors rounded-lg bg-gray-500 hover:bg-gray-300 hover:text-gray-700"
+          >
+            이전 문항
+          </Link>
+
           <FormSubmitBtn
             canClick={isValid}
             loading={loadingMutation}

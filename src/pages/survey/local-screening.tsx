@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import { FormSubmitBtn } from "../../components/form-submit-btn";
 import { PopUp } from "../../components/pop-up";
 import {
@@ -22,7 +23,7 @@ export const LocalScreening: React.FC = () => {
     getValues,
     handleSubmit,
     register,
-    formState: { isValid, errors },
+    formState: { isValid },
   } = useForm<ISaveLocalScreeningResponseForm>({
     mode: "onBlur",
     defaultValues: { response: "" },
@@ -71,35 +72,31 @@ export const LocalScreening: React.FC = () => {
           popupMode && "pointer-events-none"
         }`}
       >
-        <h2 className="text-4xl text-center pb-8 mb-20 border-b-2 font-semibold">
-          해당 연구에서 카카오톡 로그인을 사용하지 않은 이유는?
+        <h2 className="capsule-responsive-text">
+          해당 연구에서 카카오 로그인을 사용하지 않은 이유는?
         </h2>
         <form
           onSubmit={handleSubmit(onValidSubmit)}
           className="flex flex-col text-2xl"
         >
           <div className="relative w-full mb-10">
-            <label
-              htmlFor="response"
-              className={`font-semibold ${
-                errors?.response?.message && "text-red-600"
-              }`}
-            >
+            <label htmlFor="response" className="font-semibold">
               <span>선택사항입니다. 자유롭게 기재해주세요.</span>
             </label>{" "}
             <input
               id="response"
-              className={`capsule-input mt-5 ${
-                errors?.response?.message && "border-red-600"
-              }`}
-              {...register("response", {
-                required: false,
-              })}
+              className="capsule-input mt-5"
+              {...register("response", { required: false })}
               name="response"
               placeholder="ex) 카카오톡 계정이 없습니다."
             />
           </div>
-
+          <Link
+            to={surveyRoute.address}
+            className="py-4 mb-3 text-xl text-center focus:outline-none text-white transition-colors rounded-lg bg-gray-500 hover:bg-gray-300 hover:text-gray-700"
+          >
+            이전 문항
+          </Link>
           <FormSubmitBtn
             canClick={isValid}
             loading={loadingMutation}

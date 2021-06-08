@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import { FormSubmitBtn } from "../../components/form-submit-btn";
 import { PopUp } from "../../components/pop-up";
 import {
@@ -101,10 +102,9 @@ export const Question: React.FC = () => {
           popupMode && "pointer-events-none"
         }`}
       >
-        <h2 className="text-4xl text-center pb-8 mb-20 border-b-2 font-semibold">
+        <h2 className="capsule-responsive-text">
           <span>다음 문장에 동의하는 정도를 선택하여 주시오.</span>
         </h2>
-
         <form
           onSubmit={handleSubmit(onValidSubmit)}
           className="flex flex-col text-2xl"
@@ -126,9 +126,7 @@ export const Question: React.FC = () => {
             </label>
             <select
               id="response"
-              {...register("response", {
-                required: true,
-              })}
+              {...register("response", { required: true })}
               name="response"
               className="capsule-input mt-5"
             >
@@ -137,6 +135,17 @@ export const Question: React.FC = () => {
               ))}
             </select>
           </div>
+
+          <Link
+            to={
+              +questionNum === 1
+                ? surveyRoute.age
+                : surveyRoute.question(+questionNum - 1)
+            }
+            className="py-4 mb-3 text-xl text-center focus:outline-none text-white transition-colors rounded-lg bg-gray-500 hover:bg-gray-300 hover:text-gray-700"
+          >
+            이전 문항
+          </Link>
 
           <FormSubmitBtn
             canClick={isValid}

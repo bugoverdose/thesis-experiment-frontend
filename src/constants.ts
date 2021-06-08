@@ -1,6 +1,6 @@
-export const LOCALSTORAGE_TOKEN = "authentication-token";
+export const SESSION_STORAGE_TOKEN = "authentication-token";
 
-export const ageOption = Array.from(Array(100), (_, idx) => idx + 1);
+// export const ageOption = Array.from(Array(100), (_, idx) => idx + 1);
 export const questionOption = [
   "1점 - 전혀 동의하지 않는다",
   "2점 - 그다지 동의하지 않는다",

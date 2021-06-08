@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import { FormSubmitBtn } from "../../components/form-submit-btn";
 import { PopUp } from "../../components/pop-up";
 import { AccountType } from "../../generated_api_types/globalTypes";
@@ -25,7 +26,7 @@ export const Address: React.FC = () => {
     getValues,
     handleSubmit,
     register,
-    formState: { isValid, errors },
+    formState: { isValid },
   } = useForm<ISaveAddressResponseForm>({
     mode: "onBlur",
     defaultValues: { response: "" },
@@ -82,7 +83,7 @@ export const Address: React.FC = () => {
           popupMode && "pointer-events-none"
         }`}
       >
-        <h2 className="text-4xl text-center pb-8 mb-20 border-b-2 font-semibold">
+        <h2 className="capsule-responsive-text">
           연락처를 기재해주시기 바랍니다.
         </h2>
         <form
@@ -90,26 +91,24 @@ export const Address: React.FC = () => {
           className="flex flex-col text-2xl"
         >
           <div className="relative w-full mb-10">
-            <label
-              htmlFor="response"
-              className={`font-semibold ${
-                errors?.response?.message && "text-red-600"
-              }`}
-            >
+            <label htmlFor="response" className="font-semibold">
               <span>기프티콘 수령 목적입니다. 선택사항입니다.</span>
             </label>
             <input
               id="response"
-              className={`capsule-input mt-5 ${
-                errors?.response?.message && "border-red-600"
-              }`}
-              {...register("response", {
-                required: false,
-              })}
+              className="capsule-input mt-5"
+              {...register("response", { required: false })}
               name="response"
               placeholder="ex) 010-1234-5678"
             />
           </div>
+
+          <Link
+            to={surveyRoute.question(16)}
+            className="py-4 mb-3 text-xl text-center focus:outline-none text-white transition-colors rounded-lg bg-gray-500 hover:bg-gray-300 hover:text-gray-700"
+          >
+            이전 문항
+          </Link>
 
           <FormSubmitBtn
             canClick={isValid}

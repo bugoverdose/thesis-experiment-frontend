@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { LOCALSTORAGE_TOKEN } from "../constants";
+import { SESSION_STORAGE_TOKEN } from "../constants";
 import { authTokenVar, isLoggedInVar } from "../apollo";
 import { commonRoute } from "../routers/routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +10,7 @@ export const HeaderLoggedIn: React.FC = () => {
   const history = useHistory();
 
   const logout = () => {
-    localStorage.removeItem(LOCALSTORAGE_TOKEN); // 인증된 토큰 브라우저에 저장. 웹사이트 재방문시, localstorage의 토큰으로 자동 로그인 가능.
+    sessionStorage.removeItem(SESSION_STORAGE_TOKEN); // 인증된 토큰 브라우저에 저장. 웹사이트 재방문시, SESSION_STORAGE의 토큰으로 자동 로그인 가능.
     authTokenVar(null);
     isLoggedInVar(false);
     history.push(commonRoute.home);

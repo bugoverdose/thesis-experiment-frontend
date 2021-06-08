@@ -24,8 +24,7 @@ export const Gender: React.FC = () => {
     handleSubmit,
     formState: { isValid },
   } = useForm<ISaveGenderResponseForm>({
-    mode: "onBlur",
-    defaultValues: { response: "해당없음" },
+    mode: "onChange",
   });
 
   const onMutationCompleted = (data: SaveUserInfoResponse) => {
@@ -82,26 +81,36 @@ export const Gender: React.FC = () => {
           popupMode && "pointer-events-none"
         }`}
       >
-        <h2 className="text-4xl text-center pb-8 mb-20 border-b-2 font-semibold">
-          귀하의 성별은 무엇입니까?
-        </h2>
+        <h2 className="capsule-responsive-text">귀하의 성별은 무엇입니까?</h2>
         <form
           onSubmit={handleSubmit(onValidSubmit)}
           className="flex flex-col text-2xl"
         >
-          <div className="relative w-full mb-10">
-            <select
-              id="response"
-              {...register("response", {
-                required: true,
-              })}
-              name="response"
-              className="capsule-input mt-5"
-            >
-              {["남성", "여성", "해당없음"].map((response, index) => (
-                <option key={index}>{response}</option>
-              ))}
-            </select>
+          <div className="flex flex-col mb-10">
+            <label className="mb-3">
+              <input
+                type="radio"
+                {...register("response", { required: true })}
+                className="capsule-radio"
+              />
+              남성
+            </label>
+            <label className="mb-3">
+              <input
+                type="radio"
+                {...register("response", { required: true })}
+                className="capsule-radio"
+              />
+              여성
+            </label>
+            <label className="mb-3">
+              <input
+                type="radio"
+                {...register("response", { required: true })}
+                className="capsule-radio"
+              />
+              해당없음
+            </label>
           </div>
           <FormSubmitBtn
             canClick={isValid}
